@@ -20,6 +20,7 @@ struct List {
     int capacity;
     int size;
 };
+typedef struct List List;
 
 typedef struct List *ArrayList;
 
