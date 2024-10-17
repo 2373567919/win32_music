@@ -7,8 +7,8 @@
 HSTREAM hMusicStream;
 List list;
 int p;
-DWORD IDC_LIST_1 = 101;
-DWORD IDC_PROGRESS = 201;
+int IDC_LIST_1 = 101;
+int IDC_PROGRESS = 201;
 HWND hListCtrl;
 HWND hListBox;
 HWND hProgress;
