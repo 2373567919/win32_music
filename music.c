@@ -18,7 +18,7 @@ int length = 0;
 int position = 0;
 
 void open() {
-    if (!hMusicStream) {
+    if (0!=hMusicStream) {
         BASS_ChannelStop(hMusicStream);
         BASS_ChannelFree(hMusicStream);
     }
