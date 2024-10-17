@@ -134,7 +134,7 @@ void findFile(const TCHAR *folderPath) {
     hFind = FindFirstFile(filePath, &findData);
     if (hFind != INVALID_HANDLE_VALUE) {
         do {
-            if (strcmp(findData.cFileName, ".") != 0 && strcmp(findData.cFileName, "..") != 0) {
+            if (_tcscmp(findData.cFileName, TEXT(".")) != 0 && _tcscmp(findData.cFileName, TEXT("..")) != 0) {
                 if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
                     wsprintf(filePath, TEXT("%s\\%s"), folderPath, findData.cFileName);
                     findFile(filePath);
