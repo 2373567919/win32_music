@@ -9,7 +9,6 @@ List list;
 int p;
 int IDC_LIST_1 = 101;
 int IDC_PROGRESS = 201;
-HWND hListCtrl;
 HWND hListBox;
 HWND hProgress;
 HWND hMusicText;
@@ -33,7 +32,8 @@ void open() {
 
 void CALLBACK endCallback(HSYNC handle, DWORD channel, DWORD data, void *pTarget) {
     p++;
-    if (p == ListView_GetItemCount(hListCtrl)) //如果是最后一首,则下一曲是第一首
+
+    if (p == SendMessage(hListBox,LB_GETCOUNT,0,0)) //如果是最后一首,则下一曲是第一首
         p = 0;
     SendMessage(hListBox, LB_SETCURSEL, p, 0);
 
