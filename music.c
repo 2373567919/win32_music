@@ -1,4 +1,4 @@
-//
+ï»¿//
 // Created by Administrator on 2023/1/17.
 //
 
@@ -21,7 +21,7 @@ void open() {
         BASS_ChannelStop(hMusicStream);
         BASS_ChannelFree(hMusicStream);
     }
-    // ´ò¿ªÒôÀÖÂ·¾¶µÄÒôÀÖÎÄ¼ş
+    // æ‰“å¼€éŸ³ä¹è·¯å¾„çš„éŸ³ä¹æ–‡ä»¶
     hMusicStream = BASS_StreamCreateFile(FALSE, list.array[p].path, 0, 0, BASS_FLAG);
     BASS_ChannelSetSync(hMusicStream, BASS_SYNC_END, 0, endCallback, 0);
     SetWindowText(hMusicText, list.array[p].name);
@@ -33,7 +33,7 @@ void open() {
 void CALLBACK endCallback(HSYNC handle, DWORD channel, DWORD data, void *pTarget) {
     p++;
 
-    if (p == SendMessage(hListBox,LB_GETCOUNT,0,0)) //Èç¹ûÊÇ×îºóÒ»Ê×,ÔòÏÂÒ»ÇúÊÇµÚÒ»Ê×
+    if (p == SendMessage(hListBox,LB_GETCOUNT,0,0)) //å¦‚æœæ˜¯æœ€åä¸€é¦–,åˆ™ä¸‹ä¸€æ›²æ˜¯ç¬¬ä¸€é¦–
         p = 0;
     SendMessage(hListBox, LB_SETCURSEL, p, 0);
 
@@ -48,54 +48,54 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
     static HBRUSH hBrush;
     switch (message) {
         case WM_CREATE:
-            hBrush = CreateSolidBrush(RGB(255, 255, 255)); //´´½¨Ò»¸ö»­Ë¢
+            hBrush = CreateSolidBrush(RGB(255, 255, 255)); //åˆ›å»ºä¸€ä¸ªç”»åˆ·
             BASS_Init(-1, 44100, BASS_DEVICE_CPSPEAKERS, hWnd, 0);
             HFONT hFont1 = CreateFont(
-                20, 0, //¸ß¶È40, ¿íÈ¡0±íÊ¾ÓÉÏµÍ³Ñ¡Ôñ×î¼ÑÖµ
-                0, 0, //ÎÄ±¾ÇãĞ±£¬Óë×ÖÌåÇãĞ±¶¼Îª0
+                20, 0, //é«˜åº¦40, å®½å–0è¡¨ç¤ºç”±ç³»ç»Ÿé€‰æ‹©æœ€ä½³å€¼
+                0, 0, //æ–‡æœ¬å€¾æ–œï¼Œä¸å­—ä½“å€¾æ–œéƒ½ä¸º0
                 FW_NORMAL,
-                0, 0, 0, //Ğ±Ìå£¬ÏÂ»®Ïß£¬ÎŞÖĞ»®Ïß
-                DEFAULT_CHARSET, //×Ö·û¼¯
+                0, 0, 0, //æ–œä½“ï¼Œä¸‹åˆ’çº¿ï¼Œæ— ä¸­åˆ’çº¿
+                DEFAULT_CHARSET, //å­—ç¬¦é›†
                 OUT_DEFAULT_PRECIS,
                 CLIP_DEFAULT_PRECIS,
-                DEFAULT_QUALITY, //Ò»ÏµÁĞµÄÄ¬ÈÏÖµ
+                DEFAULT_QUALITY, //ä¸€ç³»åˆ—çš„é»˜è®¤å€¼
                 DEFAULT_PITCH | FF_DONTCARE,
-                _T("¿¬Ìå") //×ÖÌåÃû³Æ
+                _T("æ¥·ä½“") //å­—ä½“åç§°
             );
             HFONT hFont2 = CreateFont(
-                20, 0, //¸ß¶È40, ¿íÈ¡0±íÊ¾ÓÉÏµÍ³Ñ¡Ôñ×î¼ÑÖµ
-                0, 0, //ÎÄ±¾ÇãĞ±£¬Óë×ÖÌåÇãĞ±¶¼Îª0
+                20, 0, //é«˜åº¦40, å®½å–0è¡¨ç¤ºç”±ç³»ç»Ÿé€‰æ‹©æœ€ä½³å€¼
+                0, 0, //æ–‡æœ¬å€¾æ–œï¼Œä¸å­—ä½“å€¾æ–œéƒ½ä¸º0
                 FW_NORMAL,
-                0, 0, 0, //Ğ±Ìå£¬ÏÂ»®Ïß£¬ÎŞÖĞ»®Ïß
-                DEFAULT_CHARSET, //×Ö·û¼¯
+                0, 0, 0, //æ–œä½“ï¼Œä¸‹åˆ’çº¿ï¼Œæ— ä¸­åˆ’çº¿
+                DEFAULT_CHARSET, //å­—ç¬¦é›†
                 OUT_DEFAULT_PRECIS,
                 CLIP_DEFAULT_PRECIS,
-                DEFAULT_QUALITY, //Ò»ÏµÁĞµÄÄ¬ÈÏÖµ
+                DEFAULT_QUALITY, //ä¸€ç³»åˆ—çš„é»˜è®¤å€¼
                 DEFAULT_PITCH | FF_DONTCARE,
-                _T("Î¢ÈíÑÅºÚ") //×ÖÌåÃû³Æ
+                _T("å¾®è½¯é›…é»‘") //å­—ä½“åç§°
             );
-        //´´½¨½ø¶ÈÌõ
+        //åˆ›å»ºè¿›åº¦æ¡
             hProgress = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,
                                      2, 52, 480, 30, hWnd, (HMENU) IDC_PROGRESS, NULL, NULL);
             SendMessage(hProgress, TBM_SETRANGE, TRUE, MAKELONG(0, 100));
             SendMessage(hProgress, TBM_SETPAGESIZE, 0, 1);
-            hMusicText = CreateWindow(_T("STATIC"), _T("ÒôÀÖ"), SS_ENDELLIPSIS | WS_VISIBLE | WS_CHILD, 2, 17, 380, 35,
+            hMusicText = CreateWindow(_T("STATIC"), _T("éŸ³ä¹"), SS_ENDELLIPSIS | WS_VISIBLE | WS_CHILD, 2, 17, 380, 35,
                                       hWnd, (HMENU) 2313, NULL, NULL);
             hTimeText = CreateWindow(_T("STATIC"), _T("00:00/00:00"), SS_ENDELLIPSIS | WS_VISIBLE | WS_CHILD, 390 + 2,
                                      17, 150, 35, hWnd, (HMENU) 2314, NULL, NULL);
-        //ÉèÖÃ¶¨Ê±Æ÷
+        //è®¾ç½®å®šæ—¶å™¨
             SetTimer(NULL, 0, 200, SetProgressThread);
-        //´´½¨ÏÔÊ¾ÁĞ±í
+        //åˆ›å»ºæ˜¾ç¤ºåˆ—è¡¨
             hListBox = CreateWindow(_T("LISTBOX"), NULL, WS_CHILD | WS_VISIBLE | LBS_NOTIFY | WS_VSCROLL,
                                     2, 86, 480, 690, hWnd,
                                     (HMENU) IDC_LIST_1, NULL, NULL);
-        //ÉèÖÃÁĞ±íÏÔÊ¾×ÖÌå
+        //è®¾ç½®åˆ—è¡¨æ˜¾ç¤ºå­—ä½“
             SendMessage(hListBox, WM_SETFONT, (WPARAM) hFont2, TRUE);
             SendMessage(hMusicText, WM_SETFONT, (WPARAM) hFont1, TRUE);
             SendMessage(hTimeText, WM_SETFONT, (WPARAM) hFont2, TRUE);
-        //»ñÈ¡ÒôÀÖ²¥·ÅÁĞ±íĞÅÏ¢
+        //è·å–éŸ³ä¹æ’­æ”¾åˆ—è¡¨ä¿¡æ¯
             findMusicFile();
-        //½«ÒôÀÖ²¥·ÅĞÅÏ¢Ìí¼Óµ½ÁĞ±íÖĞ
+        //å°†éŸ³ä¹æ’­æ”¾ä¿¡æ¯æ·»åŠ åˆ°åˆ—è¡¨ä¸­
             listAddMusicName();
             break;
         case WM_COMMAND:
@@ -103,7 +103,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
             if (LOWORD(wParam) == IDC_LIST_1 && HIWORD(wParam) == LBN_DBLCLK) {
                 p = SendMessage(hListBox, LB_GETCURSEL, 0, 0);
                 open();
-                BASS_ChannelPlay(hMusicStream, FALSE); //²¥·ÅÒôÀÖÎÄ¼ş
+                BASS_ChannelPlay(hMusicStream, FALSE); //æ’­æ”¾éŸ³ä¹æ–‡ä»¶
             }
             break;
         case WM_HSCROLL:
@@ -111,16 +111,16 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
             BASS_ChannelSetPosition(hMusicStream, BASS_ChannelSeconds2Bytes(hMusicStream, position), BASS_POS_BYTE);
             break;
         case WM_CTLCOLORSTATIC:
-            HDC hdc = (HDC) wParam; //½«´«¹ıÀ´µÄ²ÎÊı×ª³ÉÕıÈ·µÄÀàĞÍ£¬¹©ºóÃæÊ¹ÓÃ
-            SetTextColor(hdc, RGB(0, 0, 0)); //ÉèÖÃÎÄ×ÖÑÕÉ«
-            SetBkColor(hdc, RGB(255, 255, 255)); //ÉèÖÃÎÄ×Ö±³¾°ÑÕÉ«
-            return (LRESULT) hBrush; //·µ»Ø»­Ë¢£¬ÓÃÓÚĞŞ¸Ästatic¿Ø¼şÑÕÉ«
+            HDC hdc = (HDC) wParam; //å°†ä¼ è¿‡æ¥çš„å‚æ•°è½¬æˆæ­£ç¡®çš„ç±»å‹ï¼Œä¾›åé¢ä½¿ç”¨
+            SetTextColor(hdc, RGB(0, 0, 0)); //è®¾ç½®æ–‡å­—é¢œè‰²
+            SetBkColor(hdc, RGB(255, 255, 255)); //è®¾ç½®æ–‡å­—èƒŒæ™¯é¢œè‰²
+            return (LRESULT) hBrush; //è¿”å›ç”»åˆ·ï¼Œç”¨äºä¿®æ”¹staticæ§ä»¶é¢œè‰²
         case WM_DESTROY:
-            //´¦Àí´°¿ÚÍË³öÏûÏ¢
+            //å¤„ç†çª—å£é€€å‡ºæ¶ˆæ¯
             BASS_ChannelFree(hMusicStream);
             PostQuitMessage(0);
             break;
-        default: //ÆäËûÇé¿öµ÷ÓÃÄ¬ÈÏº¯Êı´¦Àí
+        default: //å…¶ä»–æƒ…å†µè°ƒç”¨é»˜è®¤å‡½æ•°å¤„ç†
             return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;

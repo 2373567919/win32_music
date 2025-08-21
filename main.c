@@ -1,9 +1,9 @@
-
+ï»¿
 
 #include "music.h"
 
 #define APP_NAME TEXT("MusicWindow")
-#define WIN_TITLE TEXT("ÒôÀÖ²¥·ÅÆ÷")
+#define WIN_TITLE TEXT("éŸ³ä¹æ’­æ”¾å™¨")
 
 int WINAPI Main(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPreInstance, _In_ PTSTR  szCmdLine, _In_  int iCmdShow) {
     HWND hWnd;
@@ -20,20 +20,20 @@ int WINAPI Main(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPreInstance, _In_
     wndclass.lpszMenuName = NULL;
     wndclass.lpszClassName = APP_NAME;
 
-    //×¢²á´°¿ÚÀà
+    //æ³¨å†Œçª—å£ç±»
     if (!RegisterClass(&wndclass)) {
-        MessageBox(NULL, TEXT("´°¿ÚÀà×¢²áÊ§°Ü"), APP_NAME, MB_ICONERROR);
+        MessageBox(NULL, TEXT("çª—å£ç±»æ³¨å†Œå¤±è´¥"), APP_NAME, MB_ICONERROR);
         return 0;
     }
-    hWnd = CreateWindow(APP_NAME,//´°¿ÚÀàÃû
-                        WIN_TITLE,//´°¿Ú±êÌâ
-                        WS_OVERLAPPED|WS_CAPTION|WS_MINIMIZEBOX|WS_SYSMENU, //´°¿ÚÑùÊ½
-                        CW_USEDEFAULT,//´°¿ÚxÎ»ÖÃ
-                        CW_USEDEFAULT,//´°¿ÚyÎ»ÖÃ
-                        500,//´°¿Ú¿í¶È
-                        808,//´°¿Ú¸ß¶È
-                        NULL,//¸¸´°¿ÚµÄ¾ä±ú
-                        NULL,//´°¿Ú²Ëµ¥¾ä±ú
+    hWnd = CreateWindow(APP_NAME,//çª—å£ç±»å
+                        WIN_TITLE,//çª—å£æ ‡é¢˜
+                        WS_OVERLAPPED|WS_CAPTION|WS_MINIMIZEBOX|WS_SYSMENU, //çª—å£æ ·å¼
+                        CW_USEDEFAULT,//çª—å£xä½ç½®
+                        CW_USEDEFAULT,//çª—å£yä½ç½®
+                        500,//çª—å£å®½åº¦
+                        808,//çª—å£é«˜åº¦
+                        NULL,//çˆ¶çª—å£çš„å¥æŸ„
+                        NULL,//çª—å£èœå•å¥æŸ„
                         hInstance,
                         NULL);
     ShowWindow(hWnd, SW_SHOW);
